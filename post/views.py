@@ -1,5 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+from .models import Post
+
 def index(request):
-    return render(request,'blog/index.html')
+    posts = Post.objects.all()
+    return render(request,'blog/index.html',{"posts":posts})
+
+def detail(request,id):
+    post = Post.objects.get(id=id)
+    return render(request,'blog/detail.html',{'post':post})
