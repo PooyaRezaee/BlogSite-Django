@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+.post {
+  text-decoration: none;
+}
+
+.post:hover {
+  opacity: 0.9;
+}
+#title-text {
+  font-size: 5vw;
+  margin: 5vh;
+
+  font-weight: 700;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}

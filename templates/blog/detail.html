@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <title>Blog | Title Post </title>
+</head>
+
+<body class="bg-dark text-white">
+    <div>
+        <h1 class="text-center" id="title-text" style="background-image: url('asset/back_title.jpg');">BlogSite</h1>
+    </div>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-gradient text-danger">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Authors</a>
+                    </li>
+                </ul>
+
+                <form class="d-flex">
+                    <input class="form-control me-1" type="text" placeholder="Search">
+                    <button class="btn btn-primary" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+
+                <ul class="navbar-nav ms-auto">
+                    <!-- IF  not Authonthed -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> Login</a>
+                    </li>
+
+                    <!-- IF Authonthed -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> <i class="fa-solid fa-user"></i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"> <i class="fa-solid fa-right-from-bracket"></i></a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="alert alert-success alert-dismissible fade show col-10 m-auto">
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        <strong>Success!</strong> Test Message !!
+    </div>
+
+    <div class="m-5">
+        <div class="float-start">
+            <h1 class="display-2">Title</h1>
+
+            <!-- <a href="#" class="btn badge rounded-pill bg-primary">Writer</a><br> -->
+            <button data-bs-toggle="collapse" data-bs-target="#demo"
+                class="btn badge rounded-pill bg-primary">Name Author</button>
+            <span class="badge rounded-pill bg-secondary">2022/02/02</span>
+            <div id="demo" class="collapse"> <br>
+                <div class="card p-2" style="width:10vw;height: 35vh;">
+                    <img class="card-img-top" src="asset/1.png" alt="Card image">
+                    <div class="card-body mt-1">
+                        <p class="card-text text-dark">Max Word 7</p>
+                        <a href="#" class="btn btn-primary">See More Post</a>
+                    </div>
+                </div>
+            </div> <br>
+
+            <div class="btn-group mt-2">
+                <a href="#" type="button" class="btn btn-danger">Delete</a>
+                <a href="#" type="button" class="btn btn-warning">Update</a>
+            </div>
+        </div>
+        <img src="asset/thump-test.jpg" alt="" class="img-thumbnail float-end m-0 p-1" width="500">
+
+        <div class="clearfix"></div>
+
+        <p class="text-light blockquote">
+            
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.br <br>
+            Veniam commodi quo nisi sit a, quas harum repellat dolor <br>
+            dolores, ea corporis dolore, officiis odio voluptas libero <br>
+            doloribus laboriosam distinctio magnam sint aperiam voluptatibus
+            quae facere? Autem nulla eos corporis repellendus aspernatur hic,
+            tempore natus pariatur corrupti atque exercitationem molestias qui!
+            dasdasd
+            sadsadsad
+            sdasdasd
+            asdasd
+            dolores, ea corporis dolore, officiis odio voluptas libero <br>
+            doloribus laboriosam distinctio magnam sint aperiam voluptatibus
+            quae facere? Autem nulla eos corporis repellendus aspernatur hic,
+            tempore natus pariatur corrupti atque exercitationem molestias qui! <br>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt quos eum doloribus officiis esse, nulla temporibus vitae quae similique iste?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. <br> Hic unde dicta fugit nostrum vitae quae.
+        </p>
+    </div>
+
+    <footer>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2022 Copyright:
+            <a class="text-light" href="http://pooyarezaee.ir/" target="_blank">Pooya RezaeeMoghadam</a>
+          </div>    
+    </footer>
+</body>
+
+</html>
