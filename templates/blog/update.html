@@ -8,20 +8,23 @@
 
 {% block body %}
 
-        <form class="col-6 m-auto mt-2 mb-5" action="{% url 'update' post.id %}" method="post">
+        <form class="col-6 m-auto mt-2 mb-5" enctype="multipart/form-data" action="{% url 'update' post.id %}" method="POST">
 
         {% csrf_token %}
 
             <div class="row mb-3 mt-3">
-                <div class="col-6">
+                <div class="col-5 m-1">
+                    <label for="title" class="form-label">Title:</label>
                     {{ form.title }}
                 </div>
-                <div class="col-6">
-                    {{ form.thumbnail }}
+                <div class="col-5 m-1">
+                    <label for="thumbnail" class="form-label">Thumbnail:</label>
+                    {{ form.thumbnail.filed }}
                 </div>
             </div>
-            <div class="mb-3 col-12">
-                {{ form.body | as_crispy_field }}
+            <div class="mb-3 col-12 m-1">
+                <label for="body" class="form-label">Text:</label>
+                {{ form.body }}
             </div>
 
             <button type="submit" class="btn btn-success col-12">Update</button>

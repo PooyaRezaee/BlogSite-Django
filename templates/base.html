@@ -22,7 +22,7 @@
 <body class="bg-dark text-white">
     
     <div>
-        <h1 class="text-center" id="title-text" style="background-image: url({% static 'asset/back_title.jpg' %}) ;">BlogSite</h1>
+        <a href="{% url 'home' %}"> <h1  class="text-center" id="title-text" style="background-image: url({% static 'asset/back_title.jpg' %}) ;">BlogSite</h1></a>
     </div>
     
     {% block bar %}{% endblock bar %}

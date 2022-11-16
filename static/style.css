@@ -18,3 +18,17 @@
   -webkit-background-clip: text;
   color: transparent;
 }
+a{
+  text-decoration: none;
+}
+#avatars{
+  display: flex;
+  flex-flow: row;
+}
+.avatar{
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+  padding:  0 10px;
+  cursor: pointer;
+}

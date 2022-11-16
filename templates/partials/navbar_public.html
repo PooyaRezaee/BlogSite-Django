@@ -16,22 +16,21 @@
             </form>
 
             <ul class="navbar-nav ms-auto">
-                <!-- IF  not Authonthed -->
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'register' %}">Register</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.html"> Login</a>
-                </li>
-
-                <!-- IF Authonthed -->
-                <li class="nav-item">
-                    <a class="nav-link" href="account_panel.html"> <i class="fa-solid fa-user"></i></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#"> <i class="fa-solid fa-right-from-bracket"></i></a>
-                </li>
-
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a href='#' class="nav-link badge rounded-pill bg-dark"> <img width='30' src="/static/asset/{{ request.user.avatar }}.png" > {{ request.user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}"> <i class="fa-solid fa-right-from-bracket"></i></a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}"> Login</a>
+                    </li>
+                {% endif %}
             </ul>
 
         </div>

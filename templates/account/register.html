@@ -1,48 +1,61 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+{% load static %}
 
 {% block body %}
-    <hr>
+<hr>
+<h2 class="text-center display-5">Register</h2>
 
-    <h2 class="text-center display-5">Register</h2>
+<form class="col-6 m-auto mt-2 mb-5" method='POST' noalidate>
+    {% csrf_token %}
+    <div class="row mb-3 mt-3">
+        <div class="col">
+            <label for="firstname" class="form-label">First Name:</label>
+            {{ form.first_name }}
+        </div>
+        <div class="col">
+            <label for="lastname" class="form-label">Last Name:</label>
+            {{ form.last_name }}
+        </div>
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="username" class="form-label">User Name:</label>
+        {{ form.username }}
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="email" class="form-label">Email:</label>
+        {{ form.email }}
+    </div>
+    <div class="mb-3">
+        <label for="pwd" class="form-label">Password:</label>
+        {{ form.password }}
+    </div>
 
-    <form class="col-6 m-auto mt-2 mb-5" method='POST'>
-        {% csrf_token %}
-        <div class="row mb-3 mt-3">
-            <div class="col">
-                <label for="firstname" class="form-label">First Name:</label>
-                {{ form.first_name }}
+    <div class="row">
+        <div class="mb-3 col-9" id="avatars">
+            <div class="avatar" id="avatar-1" onclick="change_avatar(1)">
+                <img src="/static/asset/1.png" width="75">
+                <span>1</span>
             </div>
-            <div class="col">
-                <label for="lastname" class="form-label">Last Name:</label>
-                {{ form.last_name }}
+            <div class="avatar" id="avatar-2" onclick="change_avatar(2)">
+                <img src="/static/asset/2.png" width="75">
+                <span>2</span>
             </div>
-        </div>
-        <div class="mb-3 mt-3">
-            <label for="username" class="form-label">User Name:</label>
-            {{ form.username }}
-        </div>
-        <div class="mb-3 mt-3">
-            <label for="email" class="form-label">Email:</label>
-            {{ form.email }}
-        </div>
-        <div class="mb-3">
-            <label for="pwd" class="form-label">Password:</label>
-            {{ form.password }}
-        </div>
-
-        <div class="row">
-        <div class="mb-3 col-9">
-            <span>1</span>  <img src="/static/asset/1.png" width="75">
-            <span>2</span>  <img src="/static/asset/2.png" width="75">
-            <span>3</span>  <img src="/static/asset/3.png" width="75">
-            <span>4</span>  <img src="/static/asset/4.png" width="75">
+            <div class="avatar" id="avatar-3" onclick="change_avatar(3)">
+                <img src="/static/asset/3.png" width="75">
+                <span>3</span>
+            </div>
+            <div class="avatar" id="avatar-4" onclick="change_avatar(4)">
+                <img src="/static/asset/4.png" width="75">
+                <span>4</span>
+            </div>
         </div>
         <div class="mb-3 col-3">
             <label for="avatar" class="form-label">Avatar:</label>
             {{ form.avatar }}
         </div>
-        </div>
-        <button type="submit" class="btn btn-success col-12">Register</button>
-    </form>
-    {% endblock body %}
+    </div>
+    <button type="submit" class="btn btn-success col-12">Register</button>
+</form>
+
+<script src="{% static 'ScriptRegister.js' %}"></script>
+{% endblock body %}

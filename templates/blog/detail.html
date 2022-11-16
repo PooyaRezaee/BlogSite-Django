@@ -10,7 +10,6 @@
         <div class="float-start">
             <h1 class="display-2">{{ post.title }}</h1>
 
-            <!-- <a href="#" class="btn badge rounded-pill bg-primary">Writer</a><br> -->
             <button data-bs-toggle="collapse" data-bs-target="#demo"
                 class="btn badge rounded-pill bg-primary">{{ post.author }}</button>
             <span class="badge rounded-pill bg-secondary">{{ post.created }}</span>
@@ -24,10 +23,12 @@
                 </div>
             </div> <br>
 
-            <div class="btn-group mt-2">
-                <a href="{% url 'delete' post.id %}" type="button" class="btn btn-danger">Delete</a>
-                <a href="{% url 'update' post.id %}" type="button" class="btn btn-warning">Update</a>
-            </div>
+            {% if request.user == post.author or request.user.is_superuser %}
+                <div class="btn-group mt-2">
+                    <a href="{% url 'delete' post.id %}" type="button" class="btn btn-danger">Delete</a>
+                    <a href="{% url 'update' post.id %}" type="button" class="btn btn-warning">Update</a>
+                </div>
+            {% endif %}
         </div>
         <img src="{{ post.thumbnail.url }}" alt="" class="img-thumbnail float-end m-0 p-1" width="500">
 
