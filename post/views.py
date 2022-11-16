@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Post
-
+from .forms import PostForm
 
 def index(request):
     posts = Post.objects.all()
@@ -31,3 +31,17 @@ def DeletePost(request, id):
     messages.success(request, 'Post Deleted')
 
     return redirect('home')
+
+def UpdatePost(request, id):
+    post = Post.objects.get(id=id)
+
+    if request.method == "POST":
+        form = PostForm(request.POST,instance=post)
+        if form.is_valid:
+            form.save()
+            messages.success(request, 'Post Updated')
+
+        return redirect('detail',id=post.id)
+    elif request.method == "GET":
+        form = PostForm(instance=post)
+        return render(request,'blog/update.html',{"form":form,'post':post})

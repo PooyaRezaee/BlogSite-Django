@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block bar %}
+    {% include 'partials/navbar_public.html' %}
+{% endblock bar %}
+
+{% block body %}
+
+        <form class="col-6 m-auto mt-2 mb-5" action="{% url 'update' post.id %}" method="post">
+
+        {% csrf_token %}
+
+            <div class="row mb-3 mt-3">
+                <div class="col-6">
+                    {{ form.title | as_crispy_field }}
+                </div>
+                <div class="col-6">
+                    {{ form.thumbnail | as_crispy_field }}
+                </div>
+            </div>
+            <div class="mb-3 col-12">
+                {{ form.body | as_crispy_field }}
+            </div>
+
+            <button type="submit" class="btn btn-success col-12">Update</button>
+        </form>
+{% endblock body %}
