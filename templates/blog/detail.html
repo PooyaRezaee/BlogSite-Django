@@ -2,40 +2,39 @@
 {% extends 'base.html' %}
 
 
+{% block bar %}
+    {% include 'partials/navbar_public.html' %}
+{% endblock bar %}
 {% block body %}
+    <div class="m-5">
+        <div class="float-start">
+            <h1 class="display-2">{{ post.title }}</h1>
 
-{% include 'partials/navbar_public.html' %}
-
-<div class="m-5">
-    <div class="float-start">
-        <h1 class="display-2">{{ post.title }}</h1>
-
-        <!-- <a href="#" class="btn badge rounded-pill bg-primary">Writer</a><br> -->
-        <button data-bs-toggle="collapse" data-bs-target="#demo"
-            class="btn badge rounded-pill bg-primary">{{ post.author }}</button>
-        <span class="badge rounded-pill bg-secondary">{{ post.created }}</span>
-        <div id="demo" class="collapse"> <br>
-            <div class="card p-2" style="width:10vw;height: 35vh;">
-                <img class="card-img-top" src="asset/1.png" alt="Card image">
-                <div class="card-body mt-1">
-                    <p class="card-text text-dark">Max Word 7</p>
-                    <a href="#" class="btn btn-primary">See More Post</a>
+            <!-- <a href="#" class="btn badge rounded-pill bg-primary">Writer</a><br> -->
+            <button data-bs-toggle="collapse" data-bs-target="#demo"
+                class="btn badge rounded-pill bg-primary">{{ post.author }}</button>
+            <span class="badge rounded-pill bg-secondary">{{ post.created }}</span>
+            <div id="demo" class="collapse"> <br>
+                <div class="card p-2" style="width:10vw;height: 35vh;">
+                    <img class="card-img-top" src="asset/1.png" alt="Card image">
+                    <div class="card-body mt-1">
+                        <p class="card-text text-dark">Max Word 7</p>
+                        <a href="#" class="btn btn-primary">See More Post</a>
+                    </div>
                 </div>
+            </div> <br>
+
+            <div class="btn-group mt-2">
+                <a href="{% url 'delete' post.id %}" type="button" class="btn btn-danger">Delete</a>
+                <a href="#" type="button" class="btn btn-warning">Update</a>
             </div>
-        </div> <br>
-
-        <div class="btn-group mt-2">
-            <a href="#" type="button" class="btn btn-danger">Delete</a>
-            <a href="#" type="button" class="btn btn-warning">Update</a>
         </div>
-    </div>
-    <img src="{{ post.thumbnail.url }}" alt="" class="img-thumbnail float-end m-0 p-1" width="500">
+        <img src="{{ post.thumbnail.url }}" alt="" class="img-thumbnail float-end m-0 p-1" width="500">
 
-    <div class="clearfix"></div>
+        <div class="clearfix"></div>
 
-    <p class="text-light blockquote">
-        {{ post.body }}
-    </p>
-</div>
-
+        <p class="text-light blockquote">
+            {{ post.body }}
+        </p>
+    </div>  
 {% endblock body %}

@@ -22,14 +22,21 @@
 <body class="bg-dark text-white">
     
     <div>
-        {% comment %} <h1 class="text-center" id="title-text" style="background-image: {% static 'asset/back_title.jpg' %};">BlogSite</h1> {% endcomment %}
-        <h1 class="text-center" id="title-text" style="background-image: {% static 'asset/back_title.jpg' %};">BlogSite</h1>
+        <h1 class="text-center" id="title-text" style="background-image: url({% static 'asset/back_title.jpg' %}) ;">BlogSite</h1>
     </div>
     
-    <!-- <div class="alert alert-success alert-dismissible fade show col-10 m-auto">
-        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        <strong>Success!</strong> Test Message !!
-    </div> -->
+    {% block bar %}{% endblock bar %}
+
+    {% if messages %}
+        {% for msg in messages %}
+            <div class="alert alert-{{ msg.tags }} alert-dismissible fade show col-10 m-auto">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                <strong>{{ msg.tags }}</strong> {{ msg }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+
     {% block body %}{% endblock body %}
 
     <footer>
