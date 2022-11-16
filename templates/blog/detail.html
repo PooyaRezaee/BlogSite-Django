@@ -16,9 +16,9 @@
             <span class="badge rounded-pill bg-secondary">{{ post.created }}</span>
             <div id="demo" class="collapse"> <br>
                 <div class="card p-2" style="width:10vw;height: 35vh;">
-                    <img class="card-img-top" src="asset/1.png" alt="Card image">
+                    <img class="card-img-top" src="/static/asset/{{ post.author.avatar }}.png" alt="Card image">
                     <div class="card-body mt-1">
-                        <p class="card-text text-dark">Max Word 7</p>
+                        <p class="card-text text-dark">{{ post.author.bio }}</p>
                         <a href="#" class="btn btn-primary">See More Post</a>
                     </div>
                 </div>
