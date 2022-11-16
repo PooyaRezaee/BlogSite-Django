@@ -1,0 +1,18 @@
+.sidebar-custom{
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 250px;
+}
+.main-content{
+    margin-left: 250px;
+}
+footer{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+}

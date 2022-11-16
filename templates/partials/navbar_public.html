@@ -3,7 +3,7 @@
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="{% url 'home' %}">Home</a>
+                    <a class="nav-link active" href="{% url 'post:home' %}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Authors</a>
@@ -18,17 +18,17 @@
             <ul class="navbar-nav ms-auto">
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a href='#' class="nav-link badge rounded-pill bg-dark"> <img width='30' src="/static/asset/{{ request.user.avatar }}.png" > {{ request.user.username }}</a>
+                        <a href="{% url 'account:dashboard' %}" class="nav-link badge rounded-pill bg-dark"> <img width='30' src="/static/asset/{{ request.user.avatar }}.png" > {{ request.user.username }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'logout' %}"> <i class="fa-solid fa-right-from-bracket"></i></a>
+                        <a class="nav-link" href="{% url 'account:logout' %}"> <i class="fa-solid fa-right-from-bracket"></i></a>
                     </li>
                 {% else %}
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        <a class="nav-link" href="{% url 'account:register' %}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'login' %}"> Login</a>
+                        <a class="nav-link" href="{% url 'account:login' %}"> Login</a>
                     </li>
                 {% endif %}
             </ul>

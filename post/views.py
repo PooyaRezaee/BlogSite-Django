@@ -34,23 +34,24 @@ def DeletePost(request, id):
     else:
         messages.warning(request, "You Don't Have Accsess")
 
-    return redirect('home')
+    return redirect('post:home')
 
 def UpdatePost(request, id):
     post = Post.objects.get(id=id)
 
-    if request.user == post.author:
+    if request.user == post.author or request.user.is_superuser:
         if request.method == "POST":
-            form = PostForm(request.POST,instance=post)
+            form = PostForm(request.POST, request.FILES,instance=post)
             if form.is_valid:
                 form.save()
                 messages.success(request, 'Post Updated')
 
-            return redirect('detail',id=post.id)
+            return redirect('post:detail',id=post.id)
         elif request.method == "GET":
             form = PostForm(instance=post)
             return render(request,'blog/update.html',{"form":form,'post':post})
     else:
         messages.warning(request, "You Don't Have Accsess")
 
-        return redirect('home') 
+        return redirect('post:home') 
+

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     
     # 3rd Pary
     'crispy_forms',
+    'django.contrib.humanize',
 
     # Local
     'post.apps.PostConfig',

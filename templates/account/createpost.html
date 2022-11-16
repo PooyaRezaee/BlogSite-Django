@@ -1,39 +1,29 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-
-
-{% block bar %}
-    {% include 'partials/navbar_public.html' %}
-{% endblock bar %}
+{% extends 'account/base.html' %}
 
 {% block body %}
 
-        <form class="col-6 m-auto mt-2 mb-5" enctype="multipart/form-data" action="{% url 'post:update' post.id %}" method="POST">
+        <form class="col-6 m-auto mt-2 mb-5" enctype="multipart/form-data" action="{% url 'account:create-post' %}" method="POST">
 
         {% csrf_token %}
 
-            <div class="row mb-3 mt-3">
-                {% if request.user.is_superuser %}
-                <div class="col-4">
+            <div class="row mb-6 mt-3">
+                <div class="col-5">
                     <label for="title" class="form-label">Title:</label>
                     {{ form.title }}
                 </div>
 
-                <div class="col-4">
+                {% if request.user.is_superuser %}
+                <div class="col-3">
                     <label for="thumbnail" class="form-label">Thumbnail:</label>
                     {{ form.thumbnail }}
                 </div>
 
-                <div class="col-4">
+                <div class="col-3">
                     <label for="author" class="form-label">author:</label>
                     {{ form.author }}
                 </div>
 
                 {% else %}
-                <div class="col-6">
-                    <label for="title" class="form-label">Title:</label>
-                    {{ form.title }}
-                </div>
                 <div class="col-6">
                     <label for="thumbnail" class="form-label">Thumbnail:</label>
                     {{ form.thumbnail }}
@@ -45,6 +35,6 @@
                 {{ form.body }}
             </div>
 
-            <button type="submit" class="btn btn-success col-12">Update</button>
+            <button type="submit" class="btn btn-success col-12">Create Post</button>
         </form>
 {% endblock body %}
