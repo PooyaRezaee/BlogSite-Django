@@ -13,23 +13,7 @@
         {% csrf_token %}
 
             <div class="row mb-3 mt-3">
-                {% if request.user.is_superuser %}
-                <div class="col-4">
-                    <label for="title" class="form-label">Title:</label>
-                    {{ form.title }}
-                </div>
-
-                <div class="col-4">
-                    <label for="thumbnail" class="form-label">Thumbnail:</label>
-                    {{ form.thumbnail }}
-                </div>
-
-                <div class="col-4">
-                    <label for="author" class="form-label">author:</label>
-                    {{ form.author }}
-                </div>
-
-                {% else %}
+            
                 <div class="col-6">
                     <label for="title" class="form-label">Title:</label>
                     {{ form.title }}
@@ -38,7 +22,6 @@
                     <label for="thumbnail" class="form-label">Thumbnail:</label>
                     {{ form.thumbnail }}
                 </div> 
-                {% endif %}
             </div>
             <div class="mb-3 col-12 m-1">
                 <label for="body" class="form-label">Text:</label>

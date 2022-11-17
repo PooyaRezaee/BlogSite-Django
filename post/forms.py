@@ -9,4 +9,4 @@ class PostForm(forms.ModelForm):
             visible.field.widget.attrs['class'] = 'form-control'
     class Meta:
         model = Post
-        fields = ("title", "body", "thumbnail","author")
+        fields = ("title", "body", "thumbnail")

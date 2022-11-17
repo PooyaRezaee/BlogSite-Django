@@ -9,4 +9,6 @@ urlpatterns = [
     path("<int:id>/", views.detail, name="detail"),
     path("delete/<int:id>/", views.DeletePost, name="delete"),
     path("update/<int:id>/", views.UpdatePost, name="update"),
+    path("author/", views.authors, name="authors"),
+    path("author/<int:id>/", views.AuthorPost, name="author"),
 ]

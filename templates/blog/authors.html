@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block bar %}
+    {% include 'partials/navbar_public.html' %}
+{% endblock bar %}
+
+{% block body %}
+    <div class="d-flex align-items-center justify-content-center flex-wrap">
+        {% for user in users %}
+            <div>
+                <div class="card p-2 m-5 bg-light" style="width:10vw;height: 40vh;">
+                    {% if user.is_superuser %}
+                        <i class="fa-solid fa-star text-warning" style="position: absolute;font-size:1vw;"></i>
+                    {% endif %}
+                    <img class="card-img-top" src="/static/asset/{{ user.avatar }}.png" alt="Card image">
+                    <h4 class="text-center text-black"> {{user.username}} </h4>
+                    <div class="card-body mt-1">
+                        <p class="card-text text-dark">{{ user.bio | truncatechars:55 }}</p>
+                        <a href="{% url 'post:author' user.id %}" class="btn btn-primary mb-2" style="position: absolute; bottom: 0;">Posts</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div>
+</div>
+
+
+{% endblock body %}
+

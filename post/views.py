@@ -4,6 +4,7 @@ from django.core.paginator import Paginator
 from .models import Post
 from .forms import PostForm
 from django.db.models import Q
+from account.models import User
 
 def index(request):
     posts = Post.objects.all()
@@ -76,3 +77,25 @@ def search(request):
             }
 
     return render(request, 'blog/index.html', context=context)
+
+def authors(request):
+    users = User.objects.all()
+    return render(request,'blog/authors.html',{"users":users,"title":"Authors"})
+
+def AuthorPost(request,id):
+    posts = Post.objects.filter(author__id=id)
+    paginator = Paginator(posts, 9)
+    
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+            "posts": page_obj,
+            "paginator":paginator,
+            "is_paginated" : False if paginator.num_pages == 1 else True,
+            "page_obj":page_obj,
+            "title":'t',
+            'page_author':True
+            }
+    
+    return render(request,'blog/index.html',context=context)
