@@ -17,6 +17,7 @@ def index(request):
             "paginator":paginator,
             "is_paginated" : False if paginator.num_pages == 1 else True,
             "page_obj":page_obj,
+            "title":"Home",
             }
 
     return render(request, 'blog/index.html', context=context)
@@ -24,7 +25,7 @@ def index(request):
 
 def detail(request, id):
     post = Post.objects.get(id=id)
-    return render(request, 'blog/detail.html', {'post': post})
+    return render(request, 'blog/detail.html', {'post': post,"title":post.title})
 
 
 def DeletePost(request, id):
@@ -50,7 +51,7 @@ def UpdatePost(request, id):
             return redirect('post:detail',id=post.id)
         elif request.method == "GET":
             form = PostForm(instance=post)
-            return render(request,'blog/update.html',{"form":form,'post':post})
+            return render(request,'blog/update.html',{"form":form,'post':post,"title":"Update Post"})
     else:
         messages.warning(request, "You Don't Have Accsess")
 
@@ -70,7 +71,8 @@ def search(request):
             "paginator":paginator,
             "is_paginated" : False if paginator.num_pages == 1 else True,
             "page_obj":page_obj,
-            "q":q
+            "q":q,
+            "title":"Search"
             }
 
     return render(request, 'blog/index.html', context=context)
