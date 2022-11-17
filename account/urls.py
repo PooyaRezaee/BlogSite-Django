@@ -11,4 +11,6 @@ urlpatterns = [
     path('myblog/',views.myblog,name='myblog'),
     path('upusr/',views.updateuser,name='update-user'),
     path('create/post/',views.CreatePost,name='create-post'),
+    path('users/',views.users,name='users'),
+    path('users/delete/<int:id>',views.delete_user,name='delete-users'),
 ]

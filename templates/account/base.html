@@ -43,6 +43,14 @@
                         MyBlog
                     </a>
                 </li>
+                {% if request.user.is_superuser %}
+                    <li>
+                        <a href="{% url 'account:users' %}" class="nav-link  {% if page_users %}active {% else %} text-white  {% endif %}">
+                            <i class="fa-solid fa-users me-1"></i>
+                            Users
+                        </a>
+                    </li>
+                {% endif %}
                 <hr>
                 <li>
                     <a href="{% url 'post:home' %}" class="nav-link bg-danger text-white mt-2">

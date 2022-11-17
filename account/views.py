@@ -141,3 +141,21 @@ def CreatePost(request):
     
     else:
         return HttpResponseForbidden()
+
+
+def users(request):
+    if request.user.is_superuser:
+        users = User.objects.all()
+
+        return render(request, 'account/users.html', {'page_users': True,'users':users})
+    else:
+        return HttpResponseForbidden()
+    
+def delete_user(request,id):
+    if request.user.is_superuser:
+        user = User.objects.get(id=id)
+        user.delete()
+        messages.info(request, 'User Deleted')
+        return redirect('account:users')
+    else:
+        return HttpResponseForbidden()  
