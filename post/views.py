@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator
 from .models import Post
 from .forms import PostForm
+from django.db.models import Q
 
 def index(request):
     posts = Post.objects.all()
@@ -55,3 +56,21 @@ def UpdatePost(request, id):
 
         return redirect('post:home') 
 
+
+def search(request):
+    q = request.GET.get('q')
+    posts = Post.objects.filter(Q(body__icontains=q) | Q(title__icontains=q))
+    paginator = Paginator(posts, 3)
+    
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+            "posts": page_obj,
+            "paginator":paginator,
+            "is_paginated" : False if paginator.num_pages == 1 else True,
+            "page_obj":page_obj,
+            "q":q
+            }
+
+    return render(request, 'blog/index.html', context=context)

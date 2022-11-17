@@ -35,7 +35,7 @@
         <div class="clearfix"></div>
 
         <p class="text-light blockquote">
-            {{ post.body }}
+            {{ post.body | linebreaks  }}
         </p>
     </div>  
 {% endblock body %}

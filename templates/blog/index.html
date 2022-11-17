@@ -9,9 +9,9 @@
     <div class="d-flex align-items-center justify-content-center flex-wrap">
         {% for post in posts %}
             <a href="{% url 'post:detail' post.id %}" class="col-3 bg-secondary  m-4 p-3 rounded post">
-                <img src="{{ post.thumbnail.url }}" alt="" class="col-12 rounded pb-2">
+                <img src="{{ post.thumbnail.url }}" alt="" class="col-12 rounded pb-2" height="300">
 
-                <h2 class="text-white text-center">{{ post.title }}</h2>
+                <h2 class="text-white text-center" style="font-size:1vw;">{{ post.title | truncatechars:50 }}</h2>
             </a>
         {% endfor %}
     </div>
