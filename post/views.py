@@ -48,7 +48,7 @@ class DeletePostView(View):
         return redirect(self.target_url)
 
 
-    def get(self,request):
+    def get(self,request,*args,**kwargs):
         self.post.delete()
         messages.success(request, 'Post Deleted')
 
@@ -60,32 +60,32 @@ class UpdatePostView(View):
     form_class = PostForm
 
     def setup(self, request, *args, **kwargs):
-        self.post = Post.objects.get(id=kwargs['id'])
+        self.post_object = Post.objects.get(id=kwargs['id'])
         return super().setup(request, *args, **kwargs)
 
-    def dispatch(self, request ,*args, **kwargs): # HAVE A ERROR
-        if request.user == self.post.author or request.user.is_superuser:
+    def dispatch(self, request ,*args, **kwargs):
+        if request.user == self.post_object.author or request.user.is_superuser:
             return super().dispatch(request, *args, **kwargs)
         
         messages.warning(request, "You Don't Have Accsess")
-        return redirect(self.target_url,id=self.post.id)
+        return redirect(self.target_url,id=self.post_object.id)
     
-    def get(self,request,id):
-        form = self.form_class(instance=self.post)
+    def get(self,request,*args, **kwargs):
+        form = self.form_class(instance=self.post_object)
         context = {
                 "form":form,
-                'post':self.post,
+                'post':self.post_object,
                 "title":"Update Post"
                 }
 
         return render(request,self.template_name,context)
     
-    def post(self,request):
-        form = self.form_class(request.POST, request.FILES,instance=self.post)
+    def post(self,request,*args, **kwargs):
+        form = self.form_class(request.POST, request.FILES,instance=self.post_object)
         if form.is_valid:
             form.save()
             messages.success(request, 'Post Updated')
-            return redirect(self.target_url,id=self.post.id)
+            return redirect(self.target_url,id=self.post_object.id)
 
 class SearchView(View):
     template_name = 'blog/index.html'

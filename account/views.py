@@ -141,7 +141,7 @@ class CreatePostView(LoginRequiredMixin,View):
             data_form = form.cleaned_data
 
             title = data_form['title']
-            author = data_form['author'] if 'author' in data_form else request.user
+            author = data_form['author'] if data_form['author'] is not None else request.user
             body = data_form['body']
             thumbnail = data_form['thumbnail']
             created = datetime.now()
